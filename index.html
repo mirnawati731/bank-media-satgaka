@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bank Media · UPTD SMPN Satu Atap 3 Kalianda</title>
+<style>
+:root{--bg:#f6f8f4;--card:#fff;--tx:#1d2a22;--mu:#5d6b62;--ac:#1f7a4d;--ac2:#e3f2e9;--bd:#d9e2db;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a15;--card:#1a251e;--tx:#e8f0ea;--mu:#9bab9f;--ac:#5fd18f;--ac2:#21342a;--bd:#2c3d32;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121a15;--card:#1a251e;--tx:#e8f0ea;--mu:#9bab9f;--ac:#5fd18f;--ac2:#21342a;--bd:#2c3d32;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--ac);color:#fff;padding:28px 18px 24px;text-align:center}
+:root[data-theme="dark"] header,:root:not([data-theme="light"]) header{}
+header h1{margin:0 0 4px;font-size:1.6rem}header p{margin:0;opacity:.92;font-size:.95rem}
+main{max-width:1000px;margin:0 auto;padding:18px}
+.bar{display:grid;gap:10px;margin-bottom:14px}
+input[type=search]{width:100%;padding:12px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:7px 13px;border-radius:999px;cursor:pointer;font-size:.88rem}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mu);margin:4px 0 -2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:10px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:1rem}.card p{margin:0;color:var(--mu);font-size:.88rem;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{background:var(--ac2);color:var(--ac);font-size:.75rem;padding:2px 9px;border-radius:999px}
+.tag.ref{background:transparent;border:1px dashed var(--bd);color:var(--mu)}
+.btn{display:inline-block;text-decoration:none;background:var(--ac);color:#fff;padding:8px 12px;border-radius:10px;font-size:.88rem;text-align:center}
+.btn.alt{background:var(--ac2);color:var(--ac)}
+h2{font-size:1.1rem;margin:22px 0 0}
+h2.star{font-size:1.25rem;margin-top:4px}.sub{color:var(--mu);font-size:.88rem;margin:2px 0 0}
+.card.feat{border:2px solid var(--ac);background:linear-gradient(var(--ac2),var(--card) 55%)}
+.by{font-size:.8rem;color:var(--tx);font-weight:600}
+.note{background:var(--ac2);border-radius:12px;padding:12px 14px;font-size:.88rem;margin-top:22px}
+code{background:var(--card);border:1px solid var(--bd);padding:1px 5px;border-radius:5px;font-size:.82rem}
+footer{text-align:center;color:var(--mu);font-size:.8rem;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 Bank Media Pembelajaran</h1>
+<p>UPTD SMPN Satu Atap 3 Kalianda · Media pembelajaran gratis untuk semua mata pelajaran SMP</p>
+</header>
+<main>
+<h2 class="star">⭐ Karya Guru SMPN Satu Atap 3 Kalianda</h2>
+<p class="sub">Media pembelajaran interaktif buatan guru kita sendiri. Klik untuk membuka.</p>
+<div class="grid" id="karya"></div>
+<div class="bar" style="margin-top:26px">
+<input id="q" type="search" placeholder="Cari media… (mis. pecahan, ekosistem, teks narasi)">
+<div class="lbl">Mata pelajaran</div><div class="chips" id="fm"></div>
+<div class="lbl">Jenis media</div><div class="chips" id="fj"></div>
+<div class="lbl">Kelas</div><div class="chips" id="fk"></div>
+</div>
+
+<h2>Sumber belajar &amp; media pilihan</h2>
+<div class="grid" id="own"></div>
+
+<h2>Cari rujukan gratis per mapel</h2>
+<div class="grid" id="ref"></div>
+
+<div class="note"><b>Untuk admin/guru:</b> tambahkan media baru pada bagian <code>MEDIA</code> di dalam berkas ini (satu baris per media: judul, mapel, jenis, kelas, tautan, deskripsi). Unggah karya (PPT interaktif, buku cerita, video) ke Google Drive/YouTube dengan akses “Siapa saja yang memiliki link”, lalu tempel tautannya.</div>
+</main>
+<footer>© Bank Media UPTD SMPN Satu Atap 3 Kalianda · Dikelola oleh guru dan tim digitalisasi pembelajaran</footer>
+
+<script>
+const MAPEL=["Pendidikan Agama","Pendidikan Pancasila","Bahasa Indonesia","Matematika","IPA","IPS","Bahasa Inggris","PJOK","Informatika","Seni dan Budaya","Prakarya","Bahasa Daerah (Lampung)"];
+const JENIS=["MPI","Story Book","Kuis Interaktif","Infografis","Video"];
+const KELAS=["7","8","9"];
+// ====== TAMBAHKAN MEDIA DI SINI ======
+// {t:"Judul", m:"Mapel", j:"Jenis", k:"7|8|9|Semua", u:"https://tautan", d:"Deskripsi singkat"}
+const MEDIA=[
+{t:"Rumah Pendidikan: Ruang Murid – Sumber Belajar",m:"Semua",j:"Video",k:"Semua",u:"https://rumah.pendidikan.go.id",d:"Portal resmi Kemendikdasmen: ribuan video, video interaktif, dan bacaan dari PAUD hingga SMA. Masuk ke Ruang Murid › Sumber Belajar."},
+{t:"Rumah Pendidikan: Lab Maya & Gim Edukasi",m:"IPA",j:"MPI",k:"Semua",u:"https://rumah.pendidikan.go.id",d:"Laboratorium maya dan gim edukasi resmi untuk praktikum IPA tanpa alat. Pilih menu Ruang Murid."},
+{t:"Rumah Pendidikan: Bank Soal",m:"Semua",j:"Kuis Interaktif",k:"Semua",u:"https://rumah.pendidikan.go.id",d:"Latihan soal berbagai mapel untuk siswa SMP. Menu Bank Soal di Ruang Murid."},
+{t:"Rumah Pendidikan: Laboratorium Pancasila",m:"Pendidikan Pancasila",j:"MPI",k:"Semua",u:"https://rumah.pendidikan.go.id",d:"Bahan belajar Pancasila di platform resmi Kemendikdasmen; cari lewat kolom pencarian portal."},
+{t:"Khan Academy Bahasa Indonesia: Matematika",m:"Matematika",j:"Video",k:"Semua",u:"https://id.khanacademy.org/math",d:"Video penjelasan dan latihan berjenjang, gratis, dalam bahasa Indonesia."},
+{t:"Desmos: Kalkulator Grafik Online",m:"Matematika",j:"MPI",k:"8",u:"https://www.desmos.com/calculator",d:"Menggambar grafik fungsi dan persamaan linear secara interaktif di browser."},
+{t:"Kok Bisa? (Saluran YouTube)",m:"IPA",j:"Video",k:"Semua",u:"https://www.youtube.com/@KokBisa",d:"Video animasi sains populer yang menjelaskan fenomena alam dengan bahasa mudah."},
+{t:"Let’s Read: Buku Cerita Bahasa Indonesia",m:"Bahasa Indonesia",j:"Story Book",k:"Semua",u:"https://www.letsreadasia.org",d:"Perpustakaan buku cerita digital gratis, banyak berbahasa Indonesia, untuk literasi dan menulis resensi."},
+{t:"iPusnas: Perpustakaan Digital Nasional",m:"Bahasa Indonesia",j:"Story Book",k:"Semua",u:"https://ipusnas.id",d:"Aplikasi perpustakaan digital Perpusnas; pinjam buku cerita, novel, dan buku pengayaan gratis."},
+{t:"KBBI Daring",m:"Bahasa Indonesia",j:"MPI",k:"Semua",u:"https://kbbi.kemdikbud.go.id",d:"Kamus Besar Bahasa Indonesia resmi dari Badan Bahasa untuk latihan kosakata dan ejaan."},
+{t:"British Council LearnEnglish Teens",m:"Bahasa Inggris",j:"MPI",k:"Semua",u:"https://learnenglishteens.britishcouncil.org",d:"Latihan membaca, menyimak, tata bahasa, dan kosakata untuk remaja, gratis."},
+{t:"BBC Learning English",m:"Bahasa Inggris",j:"Video",k:"Semua",u:"https://www.bbc.co.uk/learningenglish",d:"Video dan audio pendek untuk melatih menyimak dan percakapan sehari-hari."},
+{t:"Scratch: Pemrograman Visual",m:"Informatika",j:"MPI",k:"Semua",u:"https://scratch.mit.edu",d:"Membuat animasi, gim, dan cerita interaktif dengan blok kode; cocok untuk pemula."},
+{t:"Hour of Code",m:"Informatika",j:"Kuis Interaktif",k:"Semua",u:"https://hourofcode.com",d:"Tantangan pemrograman satu jam dengan petunjuk langkah demi langkah."},
+{t:"Google Earth & Peta Interaktif",m:"IPS",j:"MPI",k:"Semua",u:"https://earth.google.com/web/",d:"Menjelajahi wilayah, bentang alam, dan persebaran penduduk untuk pembelajaran geografi."},
+{t:"Google Arts & Culture",m:"Seni dan Budaya",j:"Video",k:"Semua",u:"https://artsandculture.google.com",d:"Tur virtual museum, karya seni, dan budaya dunia termasuk Indonesia."},
+{t:"Al-Qur’an Kemenag Digital",m:"Pendidikan Agama",j:"MPI",k:"Semua",u:"https://quran.kemenag.go.id",d:"Al-Qur’an digital resmi Kementerian Agama lengkap dengan terjemahan dan tafsir."},
+{t:"Video senam, permainan & kebugaran (pilihan)",m:"PJOK",j:"Video",k:"Semua",u:"https://www.youtube.com/results?search_query=materi+PJOK+SMP+kelas+7+8+9",d:"Kumpulan hasil pencarian video materi PJOK SMP; guru perlu menyeleksi video yang sesuai."},
+{t:"Video kerajinan & prakarya (pilihan)",m:"Prakarya",j:"Video",k:"Semua",u:"https://www.youtube.com/results?search_query=prakarya+SMP+kerajinan+bahan+alam",d:"Kumpulan hasil pencarian video kerajinan dan pengolahan; guru perlu menyeleksi."},
+{t:"Materi Bahasa Lampung (pilihan)",m:"Bahasa Daerah (Lampung)",j:"Video",k:"Semua",u:"https://www.youtube.com/results?search_query=belajar+bahasa+lampung+SMP",d:"Kumpulan hasil pencarian video belajar Bahasa Lampung; sebaiknya diganti karya guru setempat."},
+{t:"LearningApps: Buat Kuis & Permainan",m:"Semua",j:"Kuis Interaktif",k:"Semua",u:"https://learningapps.org",d:"Gratis; ada ribuan kuis siap pakai berbagai mapel yang bisa dibuka atau ditiru."},
+{t:"PhET: Simulasi Interaktif Sains & Matematika",m:"IPA",j:"MPI",k:"Semua",u:"https://phet.colorado.edu/id/",d:"Simulasi gratis (tersedia bahasa Indonesia) untuk fisika, kimia, biologi, dan matematika."},
+{t:"GeoGebra: Aplikasi Matematika Interaktif",m:"Matematika",j:"MPI",k:"Semua",u:"https://www.geogebra.org/",d:"Grafik, geometri, dan aljabar interaktif; banyak materi siap pakai dari guru dunia."},
+{t:"StoryWeaver: Buku Cerita Gratis",m:"Bahasa Inggris",j:"Story Book",k:"Semua",u:"https://storyweaver.org.in/",d:"Ribuan buku cerita digital multibahasa, termasuk bahasa Indonesia, untuk literasi."},
+{t:"Wordwall: Buat Kuis & Permainan Edukasi",m:"Semua",j:"Kuis Interaktif",k:"Semua",u:"https://wordwall.net/id",d:"Platform pembuat kuis, roda acak, dan permainan kata; versi gratis tersedia."},
+{t:"Canva untuk Pendidikan: Infografis",m:"Semua",j:"Infografis",k:"Semua",u:"https://www.canva.com/id_id/pendidikan/",d:"Templat infografis dan poster untuk guru dan siswa."}
+];
+// =====================================
+const KARYA=[
+{t:"MPI Transformasi Geometri",m:"Matematika",k:"9",by:"Mirnawati, S.Pd.",u:"https://mirnawati731.github.io/MPI-Transformasi-Geometri/",d:"Simulasi translasi, refleksi, rotasi, dan dilatasi pada bidang koordinat, dengan narator suara dan kuis evaluasi."},
+{t:"Petualangan Teks Prosedur",m:"Bahasa Indonesia",k:"7",by:"Maya Sari, S.Pd.",u:"https://mayasari01051990-dot.github.io/MPI-Teks-Prosedur/",d:"MPI Bahasa Indonesia Fase D: materi, simulasi, praktikum, gim, LKPD, dan evaluasi dengan narasi suara."},
+{t:"Jelajah Norma",m:"Pendidikan Pancasila",k:"7",by:"Zazila Ziani, S.Pd.",u:"https://zazila623-byte.github.io/MPI-Macam-Macam-Norma/",d:"Macam-macam norma lewat materi, tiga gim (Tebak Norma, Pasangkan Norma, Misi Detektif), LKPD, dan 20 soal evaluasi."},
+{t:"Respiratory Explorer: Sistem Pernapasan",m:"IPA",k:"SMA XI",by:"Ana Triana Maiyah, S.Pd., M.Si. (SMAN 2 Kalianda)",u:"https://anatatopan-byte.github.io/MPI-Sistem-Pernapasan/",d:"Simulasi respirasi, praktikum virtual, gim, LKPD, dan 20 soal HOTS. Rujukan pengayaan sistem pernapasan."},
+{t:"Media Pembelajaran Gemini 1",m:"Semua",k:"Semua",by:"Dibagikan lewat Gemini",u:"https://share.gemini.google/i3HcSks3KZLv",d:"Media pembelajaran yang dibagikan melalui Gemini. Buka tautan untuk melihat."},
+{t:"Media Pembelajaran Gemini 2",m:"Semua",k:"Semua",by:"Dibagikan lewat Gemini",u:"https://share.gemini.google/V988fmLTvLfi",d:"Media pembelajaran yang dibagikan melalui Gemini. Buka tautan untuk melihat."}
+];
+const sel={m:"Semua",j:"Semua",k:"Semua",q:""};
+const $=id=>document.getElementById(id);
+function chips(id,arr,key){const box=$(id);box.innerHTML="";["Semua",...arr].forEach(v=>{const b=document.createElement("button");b.className="chip"+(sel[key]===v?" on":"");b.textContent=v;b.onclick=()=>{sel[key]=v;render()};box.appendChild(b)})}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function render(){
+$("karya").innerHTML=KARYA.map(x=>`<div class="card feat"><div class="tags"><span class="tag">MPI</span><span class="tag">${esc(x.m)}</span><span class="tag">${/^\d$/.test(x.k)?"Kelas ":""}${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><div class="by">${esc(x.by)}</div><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join("");
+chips("fm",MAPEL,"m");chips("fj",JENIS,"j");chips("fk",KELAS,"k");
+const q=sel.q.toLowerCase();
+const own=MEDIA.filter(x=>(sel.m==="Semua"||x.m===sel.m||x.m==="Semua")&&(sel.j==="Semua"||x.j===sel.j)&&(sel.k==="Semua"||x.k===sel.k||x.k==="Semua")&&(!q||(x.t+x.d+x.m).toLowerCase().includes(q)));
+$("own").innerHTML=own.length?own.map(x=>`<div class="card"><div class="tags"><span class="tag">${esc(x.j)}</span><span class="tag">${esc(x.m)}</span><span class="tag">Kelas ${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join(""):`<div class="card"><p>Belum ada media untuk pilihan ini. Gunakan rujukan di bawah atau tambahkan karya guru.</p></div>`;
+const ms=sel.m==="Semua"?MAPEL:[sel.m],js=sel.j==="Semua"?JENIS:[sel.j];
+const kk=sel.k==="Semua"?"":" kelas "+sel.k;
+const extra=q?" "+sel.q:"";
+const link=(m,j)=>{const base=m.replace(/ \(.*\)/,"")+" SMP"+kk+extra;
+const map={"MPI":["Cari MPI di Google","https://www.google.com/search?q="+encodeURIComponent("media pembelajaran interaktif "+base)],
+"Story Book":["Cari buku cerita","https://www.google.com/search?q="+encodeURIComponent("buku cerita digital "+base+" pdf")],
+"Kuis Interaktif":["Cari kuis Wordwall","https://wordwall.net/id/community?q="+encodeURIComponent(base)],
+"Infografis":["Cari infografis","https://www.google.com/search?tbm=isch&q="+encodeURIComponent("infografis "+base)],
+"Video":["Cari video YouTube","https://www.youtube.com/results?search_query="+encodeURIComponent("pembelajaran "+base)]};return map[j]};
+$("ref").innerHTML=ms.flatMap(m=>js.map(j=>{const [l,u]=link(m,j);return `<div class="card"><div class="tags"><span class="tag">${esc(j)}</span><span class="tag ref">Rujukan</span></div><h3>${esc(m)}</h3><p>Telusuri ${esc(j)} ${esc(m)}${esc(kk)} dari sumber gratis.</p><a class="btn alt" href="${esc(u)}" target="_blank" rel="noopener">${l}</a></div>`})).join("");
+}
+$("q").addEventListener("input",e=>{sel.q=e.target.value.trim();render()});
+render();
+</script>
+</body>
+</html>
