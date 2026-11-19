@@ -34,12 +34,43 @@ h2.star{font-size:1.25rem;margin-top:4px}.sub{color:var(--mu);font-size:.88rem;m
 .note{background:var(--ac2);border-radius:12px;padding:12px 14px;font-size:.88rem;margin-top:22px}
 code{background:var(--card);border:1px solid var(--bd);padding:1px 5px;border-radius:5px;font-size:.82rem}
 footer{text-align:center;color:var(--mu);font-size:.8rem;padding:20px}
+body{background:radial-gradient(circle at 8% 0,rgba(255,196,0,.22),transparent 38%),radial-gradient(circle at 95% 8%,rgba(0,170,255,.2),transparent 40%),radial-gradient(circle at 50% 100%,rgba(236,72,153,.14),transparent 45%),var(--bg);background-attachment:fixed}
+header{position:relative;overflow:hidden;padding:46px 16px 54px;background:linear-gradient(120deg,#00b894,#0984e3,#7c3aed,#ec4899,#00b894);background-size:300% 300%;animation:flow 14s ease infinite;border-radius:0 0 40px 40px;box-shadow:0 10px 30px rgba(9,132,227,.3)}
+header>*{position:relative;z-index:1}
+.kick{display:inline-block;background:#ffe14d;color:#4a3300;font-weight:800;letter-spacing:.12em;padding:6px 16px;border-radius:999px;font-size:.8rem;box-shadow:0 4px 0 #d9a800;animation:bob 3s ease-in-out infinite}
+header h1{margin:14px 0 0;font-size:clamp(2.6rem,10vw,5.2rem);line-height:1;font-weight:900;letter-spacing:.02em;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.18),0 10px 24px rgba(0,0,0,.25)}
+header h1 span{display:block;font-size:clamp(1.15rem,4.6vw,2.2rem);margin-top:10px;letter-spacing:.06em;background:linear-gradient(90deg,#fff7a8,#ffd23f,#fff7a8);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:shine 4s linear infinite;filter:drop-shadow(0 3px 0 rgba(0,0,0,.2))}
+header p{margin-top:16px;font-weight:600}
+header .fl{position:absolute;z-index:0;font-size:2rem;opacity:.85;animation:float 7s ease-in-out infinite;user-select:none}
+.bar{background:var(--card);padding:16px;border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.07);border:1px solid var(--bd)}
+h2.star{font-size:1.5rem;background:linear-gradient(90deg,#f59e0b,#ec4899,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chip{transition:transform .2s}.chip:hover{transform:translateY(-2px)}.chip.on{transform:scale(1.06)}
+.chip[class*="t-"]{border:2px solid var(--c)}.chip[class*="t-"].on{background:var(--c);color:var(--on,#fff)}
+.card{position:relative;transition:transform .25s,box-shadow .25s;animation:pop .5s both;animation-delay:calc(var(--i,0)*45ms)}
+.card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 14px 28px color-mix(in srgb,var(--c,#0984e3) 35%,transparent)}
+.card[class*="t-"]{border-radius:18px;border:2px solid color-mix(in srgb,var(--c) 40%,var(--bd));border-top:7px solid var(--c);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 20%,var(--card)),color-mix(in srgb,var(--c) 6%,var(--card)))}
+.card[class*="t-"] .tag{background:var(--c);color:var(--on,#fff);font-weight:700}
+.card[class*="t-"] .tag.ref{background:transparent;color:var(--mu);border:1px dashed var(--c);font-weight:400}
+.card[class*="t-"] .btn{background:var(--c);color:var(--on,#fff);font-weight:700;transition:transform .2s}
+.card .btn:hover{transform:scale(1.05)}
+.card[class*="t-"] .btn.alt{background:transparent;color:color-mix(in srgb,var(--c) 70%,var(--tx));border:2px solid var(--c)}
+.card.feat{box-shadow:0 8px 22px color-mix(in srgb,var(--c) 28%,transparent)}
+.card.feat::after{content:"⭐";position:absolute;top:8px;right:12px;animation:bob 2.5s ease-in-out infinite}
+.t-MPI{--c:#16a34a}.t-Story{--c:#e0a100;--on:#3b2a00}.t-Kuis{--c:#8b5cf6}.t-Info{--c:#0ea5e9}.t-Video{--c:#f43f5e}
+@keyframes flow{50%{background-position:100% 50%}}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@keyframes shine{to{background-position:200% 0}}
+@keyframes float{50%{transform:translateY(-18px) rotate(10deg)}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.96)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <header>
-<h1>📚 Bank Media Pembelajaran</h1>
-<p>UPTD SMPN Satu Atap 3 Kalianda · Media pembelajaran gratis untuk semua mata pelajaran SMP</p>
+<span class="fl" style="left:4%;top:16%">📚</span><span class="fl" style="left:88%;top:12%;animation-delay:-2s">🌟</span><span class="fl" style="left:12%;top:68%;animation-delay:-4s">💡</span><span class="fl" style="left:82%;top:62%;animation-delay:-1s">🎓</span><span class="fl" style="left:48%;top:6%;animation-delay:-5s">✨</span><span class="fl" style="left:70%;top:80%;animation-delay:-3s">🧩</span>
+<div class="kick">PUSAT MEDIA PEMBELAJARAN</div>
+<h1>BANK MEDIA<span>SMPN SATU ATAP 3 KALIANDA</span></h1>
+<p>MPI · Story Book · Kuis Interaktif · Infografis · Video — gratis untuk semua mata pelajaran SMP</p>
 </header>
 <main>
 <h2 class="star">⭐ Karya Guru SMPN Satu Atap 3 Kalianda</h2>
@@ -98,6 +129,7 @@ const MEDIA=[
 ];
 // =====================================
 const KARYA=[
+{t:"Petualangan Ayam Hitam & Kelinci Putih",j:"Story Book",m:"Semua",k:"Semua",by:"Mirnawati, S.Pd.",u:"https://mirnawati731.github.io/Kelinci-dan-Ayam/",d:"Buku cerita digital 15 halaman bertema peduli lingkungan, dengan fitur putar otomatis, bacakan, suara alam, dan Kuis Cerdas Peduli Lingkungan."},
 {t:"Petualangan Kucing Putih & Kucing Hitam",j:"Story Book",m:"Matematika",k:"7",by:"Mirnawati, S.Pd.",u:"https://mirnawati731.github.io/Cerita-Kucing-Bilbul/",d:"Buku cerita digital 17 halaman: belajar penjumlahan dan pengurangan bilangan bulat sambil meneladani karakter jujur, disiplin, tanggung jawab, dan peduli."},
 {t:"MPI Aljabar Linier",m:"Matematika",k:"Semua",by:"Karya guru",u:"https://arisuryadi147-eng.github.io/MPI-ALJABAR-LINIER/",d:"Media pembelajaran interaktif Matematika tentang aljabar linier. Buka tautan untuk melihat."},
 {t:"Let’s Talk! Telling and Asking Opinions",m:"Bahasa Inggris",k:"8",by:"Nova Daryanti S, S.S.",u:"https://satgaka.github.io/MPI-Bahasa-Inggris-8.1/",d:"MPI Bahasa Inggris Fase D: audio pelafalan, simulasi percakapan, speaking practice, 3 permainan, LKPD digital, dan evaluasi 20 soal."},
@@ -107,16 +139,19 @@ const KARYA=[
 {t:"Media Pembelajaran Gemini 1",m:"Semua",k:"Semua",by:"Dibagikan lewat Gemini",u:"https://share.gemini.google/i3HcSks3KZLv",d:"Media pembelajaran yang dibagikan melalui Gemini. Buka tautan untuk melihat."},
 {t:"Media Pembelajaran Gemini 2",m:"Semua",k:"Semua",by:"Dibagikan lewat Gemini",u:"https://share.gemini.google/V988fmLTvLfi",d:"Media pembelajaran yang dibagikan melalui Gemini. Buka tautan untuk melihat."}
 ];
+const K=j=>({"MPI":"t-MPI","Story Book":"t-Story","Kuis Interaktif":"t-Kuis","Infografis":"t-Info","Video":"t-Video"}[j]||"t-MPI");
+const I=j=>({"MPI":"🎮","Story Book":"📖","Kuis Interaktif":"🧩","Infografis":"📊","Video":"🎬"}[j]||"🎮");
 const sel={m:"Semua",j:"Semua",k:"Semua",q:""};
 const $=id=>document.getElementById(id);
-function chips(id,arr,key){const box=$(id);box.innerHTML="";["Semua",...arr].forEach(v=>{const b=document.createElement("button");b.className="chip"+(sel[key]===v?" on":"");b.textContent=v;b.onclick=()=>{sel[key]=v;render()};box.appendChild(b)})}
+function chips(id,arr,key){const box=$(id);box.innerHTML="";["Semua",...arr].forEach(v=>{const b=document.createElement("button");b.className="chip"+(key==="j"&&v!=="Semua"?" "+K(v):"")+(sel[key]===v?" on":"");b.textContent=v;b.onclick=()=>{sel[key]=v;render()};box.appendChild(b)})}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-function render(){
-$("karya").innerHTML=KARYA.map(x=>`<div class="card feat"><div class="tags"><span class="tag">${esc(x.j||"MPI")}</span><span class="tag">${esc(x.m)}</span><span class="tag">${/^\d$/.test(x.k)?"Kelas ":""}${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><div class="by">${esc(x.by)}</div><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join("");
+function render(){draw();requestAnimationFrame(()=>document.querySelectorAll(".card").forEach((c,i)=>c.style.setProperty("--i",i%12)))}
+function draw(){
+$("karya").innerHTML=KARYA.map(x=>`<div class="card feat ${K(x.j||"MPI")}"><div class="tags"><span class="tag">${I(x.j||"MPI")} ${esc(x.j||"MPI")}</span><span class="tag">${esc(x.m)}</span><span class="tag">${/^\d$/.test(x.k)?"Kelas ":""}${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><div class="by">${esc(x.by)}</div><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join("");
 chips("fm",MAPEL,"m");chips("fj",JENIS,"j");chips("fk",KELAS,"k");
 const q=sel.q.toLowerCase();
 const own=MEDIA.filter(x=>(sel.m==="Semua"||x.m===sel.m||x.m==="Semua")&&(sel.j==="Semua"||x.j===sel.j)&&(sel.k==="Semua"||x.k===sel.k||x.k==="Semua")&&(!q||(x.t+x.d+x.m).toLowerCase().includes(q)));
-$("own").innerHTML=own.length?own.map(x=>`<div class="card"><div class="tags"><span class="tag">${esc(x.j)}</span><span class="tag">${esc(x.m)}</span><span class="tag">Kelas ${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join(""):`<div class="card"><p>Belum ada media untuk pilihan ini. Gunakan rujukan di bawah atau tambahkan karya guru.</p></div>`;
+$("own").innerHTML=own.length?own.map(x=>`<div class="card ${K(x.j)}"><div class="tags"><span class="tag">${I(x.j)} ${esc(x.j)}</span><span class="tag">${esc(x.m)}</span><span class="tag">Kelas ${esc(x.k)}</span></div><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p><a class="btn" href="${esc(x.u)}" target="_blank" rel="noopener">Buka media</a></div>`).join(""):`<div class="card"><p>Belum ada media untuk pilihan ini. Gunakan rujukan di bawah atau tambahkan karya guru.</p></div>`;
 const ms=sel.m==="Semua"?MAPEL:[sel.m],js=sel.j==="Semua"?JENIS:[sel.j];
 const kk=sel.k==="Semua"?"":" kelas "+sel.k;
 const extra=q?" "+sel.q:"";
@@ -126,7 +161,7 @@ const map={"MPI":["Cari MPI di Google","https://www.google.com/search?q="+encode
 "Kuis Interaktif":["Cari kuis Wordwall","https://wordwall.net/id/community?q="+encodeURIComponent(base)],
 "Infografis":["Cari infografis","https://www.google.com/search?tbm=isch&q="+encodeURIComponent("infografis "+base)],
 "Video":["Cari video YouTube","https://www.youtube.com/results?search_query="+encodeURIComponent("pembelajaran "+base)]};return map[j]};
-$("ref").innerHTML=ms.flatMap(m=>js.map(j=>{const [l,u]=link(m,j);return `<div class="card"><div class="tags"><span class="tag">${esc(j)}</span><span class="tag ref">Rujukan</span></div><h3>${esc(m)}</h3><p>Telusuri ${esc(j)} ${esc(m)}${esc(kk)} dari sumber gratis.</p><a class="btn alt" href="${esc(u)}" target="_blank" rel="noopener">${l}</a></div>`})).join("");
+$("ref").innerHTML=ms.flatMap(m=>js.map(j=>{const [l,u]=link(m,j);return `<div class="card ${K(j)}"><div class="tags"><span class="tag">${I(j)} ${esc(j)}</span><span class="tag ref">Rujukan</span></div><h3>${esc(m)}</h3><p>Telusuri ${esc(j)} ${esc(m)}${esc(kk)} dari sumber gratis.</p><a class="btn alt" href="${esc(u)}" target="_blank" rel="noopener">${l}</a></div>`})).join("");
 }
 $("q").addEventListener("input",e=>{sel.q=e.target.value.trim();render()});
 render();
